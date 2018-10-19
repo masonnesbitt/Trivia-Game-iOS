@@ -9,21 +9,20 @@
 import Foundation
 
 class TriviaQuestion {
-    //String storing the text of the question
+    //String of question
     let question: String
     
-    //String array storing the potential answers to the question
+    //Answer array
     let answers: [String]
     
-    //Store the index of the correct answer in the answers array
+    //Correct answers
     let correctAnswerIndex: Int
     
-    //Computed property that returns the correct answer for the Trivia Question
+    //Returns the right answer
     var correctAnswer: String {
         return answers[correctAnswerIndex]
     }
-    
-    //Initializer for the TriviaQuestion class
+
     init(question: String, answers: [String], correctAnswerIndex: Int) {
         self.question = question
         self.answers = answers
