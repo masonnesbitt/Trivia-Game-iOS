@@ -55,7 +55,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         questions = [question1, question2, question3, question4]
     }
     
-    //This function will be used to get a random question from our array of questions
+    //Grabs random question from array
     func getNewQuestion() {
         if questions.count > 0 {
             randomIndex = Int(arc4random_uniform(UInt32(questions.count)))
@@ -75,7 +75,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         getNewQuestion()
     }
     
-    //Show an alert when the user gets the question right
+    //Right alert
     func showCorrectAnswerAlert() {
         //UIAlertController
         let correctAlert = UIAlertController(title: "Correct", message: "\(currentQuestion.correctAnswer) was the correct answer.", preferredStyle: .actionSheet)
@@ -87,7 +87,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         correctAlert.addAction(closeAction)
         self.present(correctAlert, animated: true, completion: nil)
     }
-    
+    //Wrong alert
     func showIncorrectAnswerAlert() {
         //UIAlertController
         let correctAlert = UIAlertController(title: "Incorrect", message: "\(currentQuestion.correctAnswer) was the correct answer.", preferredStyle: .actionSheet)
@@ -99,7 +99,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         correctAlert.addAction(closeAction)
         self.present(correctAlert, animated: true, completion: nil)
     }
-    
+    //Game over alert
     func showGameOverAlert() {
         //UIAlertController
         let gameOverAlert = UIAlertController(title: "Results", message: "Game over! Your score was \(score) out of \(questionsPlaceholder.count)", preferredStyle: .actionSheet)
@@ -128,7 +128,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         resetGame()
     }
     
-    //Unwind segue to this screen
     @IBAction func unwindToQuizScreen(segue: UIStoryboardSegue) { }
     
 }
