@@ -58,27 +58,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
     //This function will be used to get a random question from our array of questions
     func getNewQuestion() {
         if questions.count > 0 {
-            //Get a random index from 0 up to 1 less than the number of elements in the questions array
             randomIndex = Int(arc4random_uniform(UInt32(questions.count)))
-            //Set currentQuestion equal to the question that is at the random index in the questions array
             currentQuestion = questions[randomIndex]
         } else {
-            //If there are no questions left, reset the game
             showGameOverAlert()
         }
     }
     
     func resetGame() {
-        //Reset the score
         score = 0
-        //Repopulate the questions array with the questions in the placeholder
         if !questions.isEmpty {
-            //If we have questions remaining, append all of the remaining questions to the placeholder array
             questionsPlaceholder.append(contentsOf: questions)
         }
         questions = questionsPlaceholder
         questionsPlaceholder.removeAll()
-        //Get a new question
         getNewQuestion()
     }
     
@@ -91,13 +84,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
             self.questionsPlaceholder.append(self.questions.remove(at: self.randomIndex))
             self.getNewQuestion()
         }
-        //Add the action to the alert controller
         correctAlert.addAction(closeAction)
-        //Present the alert controller
         self.present(correctAlert, animated: true, completion: nil)
     }
     
-    //Show an alert when the user gets the question wrong
     func showIncorrectAnswerAlert() {
         //UIAlertController
         let correctAlert = UIAlertController(title: "Incorrect", message: "\(currentQuestion.correctAnswer) was the correct answer.", preferredStyle: .actionSheet)
@@ -106,19 +96,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
             self.questionsPlaceholder.append(self.questions.remove(at: self.randomIndex))
             self.getNewQuestion()
         }
-        //Add the action to the alert controller
         correctAlert.addAction(closeAction)
-        //Present the alert controller
         self.present(correctAlert, animated: true, completion: nil)
     }
     
-    //Show an alert when the game is over to show the user their final score. The game will be reset when the alert is dismissed
     func showGameOverAlert() {
         //UIAlertController
         let gameOverAlert = UIAlertController(title: "Results", message: "Game over! Your score was \(score) out of \(questionsPlaceholder.count)", preferredStyle: .actionSheet)
         //UIAlertAction
         let resetAction = UIAlertAction(title: "Reset", style: .default) { _ in
-            self.resetGame() //The reset function will be called whenever the reset button on the alert is clicked
+            self.resetGame()
         }
         //Add the action to the alert controller
         gameOverAlert.addAction(resetAction)

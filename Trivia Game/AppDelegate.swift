@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  Trivia Game
 //
-//  Created by Ryan Brashear on 10/8/18.
-//  Copyright © 2018 Ryan Brashear. All rights reserved.
+//  Created by Mason Nesbitt on 10/8/18.
+//  Copyright © 2018 Mason Nesbitt. All rights reserved.
 //
 
 import UIKit
